@@ -1,0 +1,33 @@
+version: '3.9'
+
+
+networks:
+GDSC:
+
+
+services:
+
+  nginx:
+    images: nginx:stable
+    container_name: ${APP_NAME}_nginx
+    ports:
+    - "8080:80"
+    links:
+    volumes:
+    - ./:/var/www/html
+    - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+    - php
+    - postgresql
+    networks:
+    - GDSC
+
+
+  php:
+
+  postgresql:
+
+
+
+
+
